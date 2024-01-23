@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlashCards.Core</name>
+    </assembly>
+    <members>
+        <member name="T:FlashCards.Core.Services.Storage.EnumStorageApis">
+            <summary>
+            Supported Storage Apis
+            </summary>
+        </member>
+        <member name="T:FlashCards.Core.Services.Storage.LocalSql.Converters.FlashCardConverters">
+            <summary>
+            Contains all methods to convert data between the Service Models and Storage Models
+            </summary>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.LocalSql.Converters.FlashCardConverters.ConvertSqlFlashCardSetToFlashCardSetModel(FlashCards.Core.Services.Storage.LocalSql.Models.SqlFlashCardSet)">
+            <summary>
+            Converts an SQL FlashCardSet model into a Service <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> models
+            </summary>
+            <param name="sqlFlashCardSet">SQL Model to convert</param>
+            <returns>Service FlashCardSet Implementation Model</returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.LocalSql.Converters.FlashCardConverters.ConvertSqlFlashCardSetsToFlashCardSetModels(System.Collections.Generic.IEnumerable{FlashCards.Core.Services.Storage.LocalSql.Models.SqlFlashCardSet})">
+            <summary>
+            Converts a List of SQL FlashCardSets into a List of Service <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> models
+            </summary>
+            <param name="sqlFlashCardSets"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.LocalSql.Converters.FlashCardConverters.ConvertFlashCardSetModelToSqlFlashCardSet(FlashCards.Core.Abstractions.IFlashCardSet)">
+            <summary>
+            
+            </summary>
+            <param name="flashCardSet"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
