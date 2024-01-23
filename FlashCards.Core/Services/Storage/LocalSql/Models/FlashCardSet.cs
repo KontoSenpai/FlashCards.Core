@@ -23,6 +23,10 @@ namespace FlashCards.Core.Services.Storage.LocalSql.Models
 
         public string DefinitionLanguageCode { get; set; }
 
+        public DateTime CreatedAt { get; set; }
+
+        public DateTime LastModifiedAt { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SqlFlashCard> FlashCards { get; set; }
     }

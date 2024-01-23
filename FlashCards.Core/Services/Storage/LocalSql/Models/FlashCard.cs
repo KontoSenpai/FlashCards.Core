@@ -14,6 +14,10 @@ namespace FlashCards.Core.Services.Storage.LocalSql.Models
 
         public Guid FlashCardSetId { get; set; }
 
+        public int TimeStudied { get; set; }
+
+        public int ErrorsMade { get; set; }
+
         public virtual SqlFlashCardSet FlashCardSet { get; set; }
     }
 }

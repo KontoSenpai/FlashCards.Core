@@ -6,7 +6,32 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>.\FlashCardsCore.xml</DocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>FlashCards-Core</Title>
+    <Authors>Jimmy Senechal</Authors>
+    <Company>Slackers</Company>
+    <Description>C# .Net library for manipulation of Flash Cards, supporting Text-To-Speech lecture of Terms</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KontoSenpai/FlashCards.Core</RepositoryUrl>
+    <PackageLicenseFile>Licence.txt.txt</PackageLicenseFile>
+    <PackageIcon>cards.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\FlashCards-Gui\Resources\cards.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\Licence.txt.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
