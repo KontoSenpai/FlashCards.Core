@@ -1,10 +1,9 @@
 using System.Data.Entity;
+using FlashCards.Core.Models;
 
-using FlashCardSetModel = FlashCards.Core.Models.FlashCardSet;
-
-namespace FlashCards.Core.Services.Storage.Sql.Models
+namespace FlashCards.Core.Services.Storage.LocalDB.Models
 {
-    public partial class DBContext : DbContext
+    internal class DBContext : DbContext
     {
         public DBContext()
             : base("DBContext")
@@ -16,11 +15,11 @@ namespace FlashCards.Core.Services.Storage.Sql.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<FlashCardSetModel>()
+            modelBuilder.Entity<FlashCardSet>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<FlashCardSetModel>()
+            modelBuilder.Entity<FlashCardSet>()
                 .Property(e => e.Description)
                 .IsUnicode(false);
         }

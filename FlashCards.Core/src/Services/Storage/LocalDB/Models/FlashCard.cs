@@ -1,10 +1,14 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using FlashCards.Core.Abstractions;
 
-namespace FlashCards.Core.Services.Storage.Sql.Models
+namespace FlashCards.Core.Services.Storage.LocalDB.Models
 {
+    /// <summary>
+    /// Represent a Storage implementation of a <see cref="IFlashCard"/>
+    /// </summary>
     [Table("FlashCards")]
-    public class SqlFlashCard
+    internal class SqlFlashCard
     {
         public Guid Id { get; set; }
 

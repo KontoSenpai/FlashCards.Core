@@ -4,5 +4,302 @@
         <name>FlashCards.Core</name>
     </assembly>
     <members>
+        <member name="T:FlashCards.Core.Abstractions.IFlashCard">
+            <summary>
+            Generic representation of a FlashCard.
+            A FlashCard represents a combination of a term and a definition
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCard.Id">
+            <summary>
+            Unique Identifier of the FlashCard
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCard.FlashCardSetId">
+            <summary>
+            Unique identifier of the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> that contains the FlashCard
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCard.Term">
+            <summary>
+            Term of the FlashCard
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCard.Definition">
+            <summary>
+            Definition of the <see cref="P:FlashCards.Core.Abstractions.IFlashCard.Term"/> of the FlashCard
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCard.TimeStudied">
+            <summary>
+            Amount of times this <see cref="P:FlashCards.Core.Abstractions.IFlashCard.Term"/> has been studied
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCard.ErrorsMade">
+            <summary>
+            Amount of times the studied <see cref="P:FlashCards.Core.Abstractions.IFlashCard.Term"/> was guessed wrong
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCard.IsEditing">
+            <summary>
+            Changes the logic of the FlashCard based on the state
+            </summary>
+        </member>
+        <member name="M:FlashCards.Core.Abstractions.IFlashCard.ToggleEdit">
+            <summary>
+            Changes the state of the <see cref="P:FlashCards.Core.Abstractions.IFlashCard.IsEditing"/> value
+            </summary>
+            <returns>New <see cref="P:FlashCards.Core.Abstractions.IFlashCard.IsEditing"/> state</returns>
+        </member>
+        <member name="T:FlashCards.Core.Abstractions.IFlashCardSet">
+            <summary>
+            Generic representation of a FlashCardSet.
+            A FlashCardSet represents a container of <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> with a language for both the terms and the definitions
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCardSet.Id">
+            <summary>
+            Unique Identifier of the FlashCardSet
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCardSet.Name">
+            <summary>
+            User-Friendly Name of the FlashCardSet
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCardSet.Description">
+            <summary>
+            Description to describe what the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> represents in the Set
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCardSet.TermLanguageCode">
+            <summary>
+            Language to use the TTS for the synthesized voice of the <see cref="P:FlashCards.Core.Abstractions.IFlashCard.Term"/>
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCardSet.DefinitionLanguageCode">
+            <summary>
+            Language to use the TTS for the synthesized voice of the <see cref="P:FlashCards.Core.Abstractions.IFlashCard.Definition"/>
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCardSet.CreatedAt">
+            <summary>
+            Date when the FlashCardSet was Created
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCardSet.LastModifiedAt">
+            <summary>
+            Date when the FlashCardSet content was last modified
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Abstractions.IFlashCardSet.FlashCards">
+            <summary>
+            List of <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> contained in the FlashCardSet
+            </summary>
+        </member>
+        <member name="T:FlashCards.Core.Models.FlashCard">
+            <summary>
+            Default implementation of <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/>
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCard.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCard.FlashCardSetId">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCard.Term">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCard.Definition">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCard.TimeStudied">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCard.ErrorsMade">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCard.IsEditing">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlashCards.Core.Models.FlashCard.ToggleEdit">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCard.FlashCardSet">
+            <summary>
+            <see cref="P:FlashCards.Core.Models.FlashCard.FlashCardSet"/> containing the FlashCard
+            </summary>
+        </member>
+        <member name="T:FlashCards.Core.Models.FlashCardSet">
+            <summary>
+            Default implementation of <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/>
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCardSet.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCardSet.Name">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCardSet.Description">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCardSet.TermLanguageCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCardSet.DefinitionLanguageCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCardSet.CreatedAt">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCardSet.LastModifiedAt">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCardSet.FlashCards">
+            <inheritdoc/>
+        </member>
+        <member name="T:FlashCards.Core.Services.Storage.Abstractions.IStorage">
+            <summary>
+            Interface defining permitted operations on storage implementations
+            </summary>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCardSet(System.Guid)">
+            <summary>
+            Retrieves the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> corresponding to given unique identifier from the storage
+            </summary>
+            <param name="id">Unique Identifier of the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> to retrieve</param>
+            <returns>The <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> if it exists, null otherwise</returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCardSets">
+            <summary>
+            Retrieves all <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> that exists in the storage
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> of all existing <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/></returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.CreateOrUpdateFlashCardSet(FlashCards.Core.Abstractions.IFlashCardSet)">
+            <summary>
+            Create an object in the storage if it doesn't exist.
+            If it exists, update the object instead.
+            </summary>
+            <param name="flashCardSet">FlashCardSet to Create or Update</param>
+            <returns>The update <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> object in the storage</returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCardSet(System.Guid)">
+            <summary>
+            Delete the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> corresponding to given unique identifier from the storage
+            </summary>
+            <param name="id">Unique Identifier of the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> to delete</param>
+            <returns>True if the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> still exists in the storage, False otherwise</returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCard(System.Guid)">
+            <summary>
+            Retrieves the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> corresponding to given unique identifier from the storage
+            </summary>
+            <param name="id">Unique Identifier of the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> to retrieve</param>
+            <returns>The <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> if it exists, null otherwise</returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCards">
+            <summary>
+            Retrieves all <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> that exists in the storage
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> of all existing <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/></returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.CreateOrUpdateFlashCard(FlashCards.Core.Abstractions.IFlashCard)">
+            <summary>
+            Create an object in the storage if it doesn't exist.
+            If it exists, update the object instead.
+            </summary>
+            <param name="flashCard">FlashCardSet to Create or Update</param>
+            <returns>The update <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> object in the storage</returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCard(System.Guid)">
+            <summary>
+            Delete the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> corresponding to given unique identifier from the storage
+            </summary>
+            <param name="id">Unique Identifier of the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> to delete</param>
+            <returns>True if the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> still exists in the storage, False otherwise</returns>
+        </member>
+        <member name="T:FlashCards.Core.Services.Storage.EnumStorageApis">
+            <summary>
+            List all supported Storage apis
+            </summary>
+        </member>
+        <member name="F:FlashCards.Core.Services.Storage.EnumStorageApis.LocalDb">
+            <summary>
+            Use a LocalDB to store user data
+            </summary>
+        </member>
+        <member name="T:FlashCards.Core.Services.Storage.LocalDB.SqlStorageService">
+            <summary>
+            Implementation of <see cref="T:FlashCards.Core.Services.Storage.Abstractions.IStorage"/>.
+            Uses a LocalDB Connection to handle CRUD on <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> and <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/>
+            </summary>
+        </member>
+        <member name="T:FlashCards.Core.Services.Storage.LocalDB.Models.SqlFlashCard">
+            <summary>
+            Represent a Storage implementation of a <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/>
+            </summary>
+        </member>
+        <member name="T:FlashCards.Core.Services.Storage.LocalDB.Models.SqlFlashCardSet">
+            <summary>
+            Represent a Storage implementation of a <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/>
+            </summary>
+        </member>
+        <member name="T:FlashCards.Core.Services.ServiceFactory">
+            <summary>
+            Factory handling the different implementation of each service provided by the API
+            </summary>
+        </member>
+        <member name="M:FlashCards.Core.Services.ServiceFactory.GeTextToSpeakService(FlashCards.Core.Services.TextToSpeech.EnumTtsApis)">
+            <summary>
+            Returns the <see cref="T:FlashCards.Core.Services.TextToSpeech.Abstractions.ITextToSpeakService"/> implementation corresponding to currently selected <see cref="T:FlashCards.Core.Services.TextToSpeech.EnumTtsApis"/>
+            </summary>
+            <param name="selectedTtsApi">Requested TTS service</param>
+            <returns>Implementation of the corresponding <see cref="T:FlashCards.Core.Services.TextToSpeech.Abstractions.ITextToSpeakService"/></returns>
+            <exception cref="T:System.NotImplementedException">When requested TTS Api doesn't exists</exception>
+        </member>
+        <member name="M:FlashCards.Core.Services.ServiceFactory.GetStorageService(FlashCards.Core.Services.Storage.EnumStorageApis)">
+            <summary>
+            Returns the <see cref="T:FlashCards.Core.Services.TextToSpeech.Abstractions.ITextToSpeakService"/> implementation corresponding to currently selected <see cref="T:FlashCards.Core.Services.TextToSpeech.EnumTtsApis"/>
+            </summary>
+            <param name="selectedStorageApi">Requested storage service</param>
+            <returns>Implementation of the corresponding <see cref="T:FlashCards.Core.Services.TextToSpeech.Abstractions.ITextToSpeakService"/></returns>
+            <exception cref="T:System.NotImplementedException">When requested TTS Api doesn't exists</exception>
+        </member>
+        <member name="T:FlashCards.Core.Services.TextToSpeech.EnumTtsApis">
+            <summary>
+            List all supported TTS Apis
+            </summary>
+        </member>
+        <member name="F:FlashCards.Core.Services.TextToSpeech.EnumTtsApis.Google">
+            <summary>
+            Cloud Google TTS Api to synthesize voices
+            </summary>
+        </member>
+        <member name="F:FlashCards.Core.Services.TextToSpeech.EnumTtsApis.Microsoft">
+            <summary>
+            Native Microsoft to synthesize voices
+            Not recommended as it is quite limited with the amount of available voices
+            </summary>
+        </member>
+        <member name="T:FlashCards.Core.Services.TextToSpeech.Models.TextToSpeechLanguage">
+            <summary>
+            Represents A Service TTS Language model
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Services.TextToSpeech.Models.TextToSpeechLanguage.DisplayName">
+            <summary>
+            Display value of the language
+            <example>English (United-States)</example>
+            </summary>
+        </member>
+        <member name="P:FlashCards.Core.Services.TextToSpeech.Models.TextToSpeechLanguage.LanguageCode">
+            <summary>
+            LanguageCode to generate the voice for language
+            <example>EN-US</example>
+            </summary>
+        </member>
     </members>
 </doc>

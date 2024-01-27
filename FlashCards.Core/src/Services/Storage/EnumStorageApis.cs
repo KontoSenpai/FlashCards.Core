@@ -1,7 +1,13 @@
 ﻿namespace FlashCards.Core.Services.Storage
 {
+    /// <summary>
+    /// List all supported Storage apis
+    /// </summary>
     public enum EnumStorageApis
     {
-        Sql,
+        /// <summary>
+        /// Use a LocalDB to store user data
+        /// </summary>
+        LocalDb
     }
 }

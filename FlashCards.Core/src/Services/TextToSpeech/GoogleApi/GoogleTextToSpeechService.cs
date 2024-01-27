@@ -13,7 +13,7 @@ namespace FlashCards.Core.Services.TextToSpeech.GoogleApi
 {
     internal class GoogleTextToSpeechService : BaseTextToSpeechService, ITextToSpeakService
     {
-        private TextToSpeechClient _client;
+        private readonly TextToSpeechClient _client;
 
         private List<Voice> _voices;
 
@@ -109,7 +109,6 @@ namespace FlashCards.Core.Services.TextToSpeech.GoogleApi
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 }
