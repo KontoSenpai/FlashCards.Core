@@ -173,7 +173,7 @@
             Interface defining permitted operations on storage implementations
             </summary>
         </member>
-        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCardSet(System.Guid)">
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCardSet(System.Int32)">
             <summary>
             Retrieves the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> corresponding to given unique identifier from the storage
             </summary>
@@ -202,7 +202,7 @@
             <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
             <returns>The update <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> object in the storage</returns>
         </member>
-        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCardSet(System.Guid,System.Boolean)">
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCardSet(System.Int32,System.Boolean)">
             <summary>
             Delete the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> corresponding to given unique identifier from the storage
             </summary>
@@ -210,7 +210,7 @@
             <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
             <returns>True if the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> still exists in the storage, False otherwise</returns>
         </member>
-        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCard(System.Guid)">
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCard(System.Int32)">
             <summary>
             Retrieves the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> corresponding to given unique identifier from the storage
             </summary>
@@ -239,7 +239,7 @@
             <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
             <returns>The update <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> object in the storage</returns>
         </member>
-        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCard(System.Guid,System.Boolean)">
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCard(System.Int32,System.Boolean)">
             <summary>
             Delete the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> corresponding to given unique identifier from the storage
             </summary>

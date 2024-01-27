@@ -50,7 +50,7 @@ namespace FlashCards.Core.Services.Storage.LocalDB
             };
         }
 
-        public async Task<IFlashCardSet> GetFlashCardSet(Guid id)
+        public async Task<IFlashCardSet> GetFlashCardSet(int id)
         {
             return (await _context.FlashCardSets.FindAsync(id))?.ToServiceModel();
         }
@@ -69,7 +69,7 @@ namespace FlashCards.Core.Services.Storage.LocalDB
             return (await _context.FlashCardSets.FindAsync(flashCardSet.Id))?.ToServiceModel();
         }
 
-        public async Task<bool> DeleteFlashCardSet(Guid id, bool saveChanges = true)
+        public async Task<bool> DeleteFlashCardSet(int id, bool saveChanges = true)
         {
             var flashCardSet = await _context.FlashCardSets.FindAsync(id);
 
@@ -109,7 +109,7 @@ namespace FlashCards.Core.Services.Storage.LocalDB
             };
         }
 
-        public async Task<IFlashCard> GetFlashCard(Guid id)
+        public async Task<IFlashCard> GetFlashCard(int id)
         {
             return (await _context.FlashCards.FindAsync(id))?.ToServiceModel();
         }
@@ -127,7 +127,7 @@ namespace FlashCards.Core.Services.Storage.LocalDB
             return card?.ToServiceModel();
         }
 
-        public async Task<bool> DeleteFlashCard(Guid id, bool saveChanges = true)
+        public async Task<bool> DeleteFlashCard(int id, bool saveChanges = true)
         {
             var flashCard = await _context.FlashCards.FindAsync(id);
 

@@ -18,7 +18,7 @@ namespace FlashCards.Core.Services.Storage.Abstractions
         /// </summary>
         /// <param name="id">Unique Identifier of the <see cref="IFlashCardSet"/> to retrieve</param>
         /// <returns>The <see cref="IFlashCardSet"/> if it exists, null otherwise</returns>
-        Task<IFlashCardSet> GetFlashCardSet(Guid id);
+        Task<IFlashCardSet> GetFlashCardSet(int id);
 
         /// <summary>
         /// Retrieves paginated <see cref="IFlashCardSet"/> that exists in the storage
@@ -48,7 +48,7 @@ namespace FlashCards.Core.Services.Storage.Abstractions
         /// <param name="id">Unique Identifier of the <see cref="IFlashCardSet"/> to delete</param>
         /// <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
         /// <returns>True if the <see cref="IFlashCardSet"/> still exists in the storage, False otherwise</returns>
-        Task<bool> DeleteFlashCardSet(Guid id, bool saveChanges = true);
+        Task<bool> DeleteFlashCardSet(int id, bool saveChanges = true);
 
         // FlashCards
 
@@ -57,7 +57,7 @@ namespace FlashCards.Core.Services.Storage.Abstractions
         /// </summary>
         /// <param name="id">Unique Identifier of the <see cref="IFlashCard"/> to retrieve</param>
         /// <returns>The <see cref="IFlashCard"/> if it exists, null otherwise</returns>
-        Task<IFlashCard> GetFlashCard(Guid id);
+        Task<IFlashCard> GetFlashCard(int id);
 
         /// <summary>
         /// Retrieves all <see cref="IFlashCard"/> that exists in the storage
@@ -87,6 +87,6 @@ namespace FlashCards.Core.Services.Storage.Abstractions
         /// <param name="id">Unique Identifier of the <see cref="IFlashCard"/> to delete</param>
         /// <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
         /// <returns>True if the <see cref="IFlashCard"/> still exists in the storage, False otherwise</returns>
-        Task<bool> DeleteFlashCard(Guid id, bool saveChanges = true);
+        Task<bool> DeleteFlashCard(int id, bool saveChanges = true);
     }
 }
