@@ -97,67 +97,75 @@
             List of <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> contained in the FlashCardSet
             </summary>
         </member>
-        <member name="T:FlashCards.Core.Models.FlashCard">
+        <member name="P:FlashCards.Core.Abstractions.IFlashCardSet.Owner">
+            <summary>
+            Email adress of the person that created the Set
+            </summary>
+        </member>
+        <member name="T:FlashCards.Core.Models.FlashCardModel">
             <summary>
             Default implementation of <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/>
             </summary>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCard.Id">
+        <member name="P:FlashCards.Core.Models.FlashCardModel.Id">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCard.FlashCardSetId">
+        <member name="P:FlashCards.Core.Models.FlashCardModel.FlashCardSetId">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCard.Term">
+        <member name="P:FlashCards.Core.Models.FlashCardModel.Term">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCard.Definition">
+        <member name="P:FlashCards.Core.Models.FlashCardModel.Definition">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCard.TimeStudied">
+        <member name="P:FlashCards.Core.Models.FlashCardModel.TimeStudied">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCard.ErrorsMade">
+        <member name="P:FlashCards.Core.Models.FlashCardModel.ErrorsMade">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCard.IsEditing">
+        <member name="P:FlashCards.Core.Models.FlashCardModel.IsEditing">
             <inheritdoc/>
         </member>
-        <member name="M:FlashCards.Core.Models.FlashCard.ToggleEdit">
+        <member name="M:FlashCards.Core.Models.FlashCardModel.ToggleEdit">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCard.FlashCardSet">
+        <member name="P:FlashCards.Core.Models.FlashCardModel.FlashCardSet">
             <summary>
-            <see cref="P:FlashCards.Core.Models.FlashCard.FlashCardSet"/> containing the FlashCard
+            <see cref="P:FlashCards.Core.Models.FlashCardModel.FlashCardSet"/> containing the FlashCard
             </summary>
         </member>
-        <member name="T:FlashCards.Core.Models.FlashCardSet">
+        <member name="T:FlashCards.Core.Models.FlashCardSetModel">
             <summary>
             Default implementation of <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/>
             </summary>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCardSet.Id">
+        <member name="P:FlashCards.Core.Models.FlashCardSetModel.Id">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCardSet.Name">
+        <member name="P:FlashCards.Core.Models.FlashCardSetModel.Name">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCardSet.Description">
+        <member name="P:FlashCards.Core.Models.FlashCardSetModel.Description">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCardSet.TermLanguageCode">
+        <member name="P:FlashCards.Core.Models.FlashCardSetModel.TermLanguageCode">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCardSet.DefinitionLanguageCode">
+        <member name="P:FlashCards.Core.Models.FlashCardSetModel.DefinitionLanguageCode">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCardSet.CreatedAt">
+        <member name="P:FlashCards.Core.Models.FlashCardSetModel.CreatedAt">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCardSet.LastModifiedAt">
+        <member name="P:FlashCards.Core.Models.FlashCardSetModel.LastModifiedAt">
             <inheritdoc/>
         </member>
-        <member name="P:FlashCards.Core.Models.FlashCardSet.FlashCards">
+        <member name="P:FlashCards.Core.Models.FlashCardSetModel.Owner">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlashCards.Core.Models.FlashCardSetModel.FlashCards">
             <inheritdoc/>
         </member>
         <member name="T:FlashCards.Core.Services.Storage.Abstractions.IStorage">
@@ -174,23 +182,32 @@
         </member>
         <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCardSets">
             <summary>
-            Retrieves all <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> that exists in the storage
+            Retrieves paginated <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> that exists in the storage
             </summary>
-            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> of all existing <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/></returns>
+            <returns>A <see cref="T:FlashCards.Core.src.Services.Storage.Models.PaginationResult`1"/> of all existing <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/></returns>
         </member>
-        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.CreateOrUpdateFlashCardSet(FlashCards.Core.Abstractions.IFlashCardSet)">
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCardSets(FlashCards.Core.src.Services.Storage.Models.PaginationQuery)">
+            <summary>
+            Retrieves paginated <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> that exists in the storage
+            </summary>
+            <param name="filter">Pagination Filter to use to retrieve the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/></param>
+            <returns>A <see cref="T:FlashCards.Core.src.Services.Storage.Models.PaginationResult`1"/> of all existing <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/></returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.CreateOrUpdateFlashCardSet(FlashCards.Core.Abstractions.IFlashCardSet,System.Boolean)">
             <summary>
             Create an object in the storage if it doesn't exist.
             If it exists, update the object instead.
             </summary>
             <param name="flashCardSet">FlashCardSet to Create or Update</param>
+            <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
             <returns>The update <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> object in the storage</returns>
         </member>
-        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCardSet(System.Guid)">
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCardSet(System.Guid,System.Boolean)">
             <summary>
             Delete the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> corresponding to given unique identifier from the storage
             </summary>
             <param name="id">Unique Identifier of the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> to delete</param>
+            <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
             <returns>True if the <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> still exists in the storage, False otherwise</returns>
         </member>
         <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCard(System.Guid)">
@@ -206,19 +223,28 @@
             </summary>
             <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> of all existing <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/></returns>
         </member>
-        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.CreateOrUpdateFlashCard(FlashCards.Core.Abstractions.IFlashCard)">
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.GetFlashCards(FlashCards.Core.src.Services.Storage.Models.PaginationQuery)">
+            <summary>
+            Retrieves all <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> that exists in the storage
+            </summary>
+            <param name="filter">Pagination Filter to use to retrieve the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/></param>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> of all existing <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/></returns>
+        </member>
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.CreateOrUpdateFlashCard(FlashCards.Core.Abstractions.IFlashCard,System.Boolean)">
             <summary>
             Create an object in the storage if it doesn't exist.
             If it exists, update the object instead.
             </summary>
             <param name="flashCard">FlashCardSet to Create or Update</param>
+            <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
             <returns>The update <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> object in the storage</returns>
         </member>
-        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCard(System.Guid)">
+        <member name="M:FlashCards.Core.Services.Storage.Abstractions.IStorage.DeleteFlashCard(System.Guid,System.Boolean)">
             <summary>
             Delete the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> corresponding to given unique identifier from the storage
             </summary>
             <param name="id">Unique Identifier of the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> to delete</param>
+            <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
             <returns>True if the <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/> still exists in the storage, False otherwise</returns>
         </member>
         <member name="T:FlashCards.Core.Services.Storage.EnumStorageApis">
@@ -231,20 +257,10 @@
             Use a LocalDB to store user data
             </summary>
         </member>
-        <member name="T:FlashCards.Core.Services.Storage.LocalDB.SqlStorageService">
+        <member name="T:FlashCards.Core.Services.Storage.LocalDB.LocalDBStorageService">
             <summary>
             Implementation of <see cref="T:FlashCards.Core.Services.Storage.Abstractions.IStorage"/>.
             Uses a LocalDB Connection to handle CRUD on <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/> and <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/>
-            </summary>
-        </member>
-        <member name="T:FlashCards.Core.Services.Storage.LocalDB.Models.SqlFlashCard">
-            <summary>
-            Represent a Storage implementation of a <see cref="T:FlashCards.Core.Abstractions.IFlashCard"/>
-            </summary>
-        </member>
-        <member name="T:FlashCards.Core.Services.Storage.LocalDB.Models.SqlFlashCardSet">
-            <summary>
-            Represent a Storage implementation of a <see cref="T:FlashCards.Core.Abstractions.IFlashCardSet"/>
             </summary>
         </member>
         <member name="T:FlashCards.Core.Services.ServiceFactory">

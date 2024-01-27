@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FlashCards.Core.Abstractions;
+using FlashCards.Core.src.Services.Storage.Models;
 
 namespace FlashCards.Core.Services.Storage.Abstractions
 {
@@ -20,25 +21,34 @@ namespace FlashCards.Core.Services.Storage.Abstractions
         Task<IFlashCardSet> GetFlashCardSet(Guid id);
 
         /// <summary>
-        /// Retrieves all <see cref="IFlashCardSet"/> that exists in the storage
+        /// Retrieves paginated <see cref="IFlashCardSet"/> that exists in the storage
         /// </summary>
-        /// <returns>A <see cref="IEnumerable{T}"/> of all existing <see cref="IFlashCardSet"/></returns>
-        Task<IEnumerable<IFlashCardSet>> GetFlashCardSets();
+        /// <returns>A <see cref="PaginationResult{T}"/> of all existing <see cref="IFlashCardSet"/></returns>
+        Task<PaginationResult<IFlashCardSet>> GetFlashCardSets();
+
+        /// <summary>
+        /// Retrieves paginated <see cref="IFlashCardSet"/> that exists in the storage
+        /// </summary>
+        /// <param name="filter">Pagination Filter to use to retrieve the <see cref="IFlashCardSet"/></param>
+        /// <returns>A <see cref="PaginationResult{T}"/> of all existing <see cref="IFlashCardSet"/></returns>
+        Task<PaginationResult<IFlashCardSet>> GetFlashCardSets(PaginationQuery filter);
 
         /// <summary>
         /// Create an object in the storage if it doesn't exist.
         /// If it exists, update the object instead.
         /// </summary>
         /// <param name="flashCardSet">FlashCardSet to Create or Update</param>
+        /// <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
         /// <returns>The update <see cref="IFlashCardSet"/> object in the storage</returns>
-        Task<IFlashCardSet> CreateOrUpdateFlashCardSet(IFlashCardSet flashCardSet);
+        Task<IFlashCardSet> CreateOrUpdateFlashCardSet(IFlashCardSet flashCardSet, bool saveChanges = true);
 
         /// <summary>
         /// Delete the <see cref="IFlashCardSet"/> corresponding to given unique identifier from the storage
         /// </summary>
         /// <param name="id">Unique Identifier of the <see cref="IFlashCardSet"/> to delete</param>
+        /// <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
         /// <returns>True if the <see cref="IFlashCardSet"/> still exists in the storage, False otherwise</returns>
-        Task<bool> DeleteFlashCardSet(Guid id);
+        Task<bool> DeleteFlashCardSet(Guid id, bool saveChanges = true);
 
         // FlashCards
 
@@ -53,21 +63,30 @@ namespace FlashCards.Core.Services.Storage.Abstractions
         /// Retrieves all <see cref="IFlashCard"/> that exists in the storage
         /// </summary>
         /// <returns>A <see cref="IEnumerable{T}"/> of all existing <see cref="IFlashCard"/></returns>
-        Task<IEnumerable<IFlashCard>> GetFlashCards();
+        Task<PaginationResult<IFlashCard>> GetFlashCards();
+
+        /// <summary>
+        /// Retrieves all <see cref="IFlashCard"/> that exists in the storage
+        /// </summary>
+        /// <param name="filter">Pagination Filter to use to retrieve the <see cref="IFlashCard"/></param>
+        /// <returns>A <see cref="IEnumerable{T}"/> of all existing <see cref="IFlashCard"/></returns>
+        Task<PaginationResult<IFlashCard>> GetFlashCards(PaginationQuery filter);
 
         /// <summary>
         /// Create an object in the storage if it doesn't exist.
         /// If it exists, update the object instead.
         /// </summary>
         /// <param name="flashCard">FlashCardSet to Create or Update</param>
+        /// <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
         /// <returns>The update <see cref="IFlashCard"/> object in the storage</returns>
-        Task<IFlashCard> CreateOrUpdateFlashCard(IFlashCard flashCard);
+        Task<IFlashCard> CreateOrUpdateFlashCard(IFlashCard flashCard, bool saveChanges = true);
 
         /// <summary>
         /// Delete the <see cref="IFlashCard"/> corresponding to given unique identifier from the storage
         /// </summary>
         /// <param name="id">Unique Identifier of the <see cref="IFlashCard"/> to delete</param>
+        /// <param name="saveChanges">Whether or not to save changes after performing the query. Default is true</param>
         /// <returns>True if the <see cref="IFlashCard"/> still exists in the storage, False otherwise</returns>
-        Task<bool> DeleteFlashCard(Guid id);
+        Task<bool> DeleteFlashCard(Guid id, bool saveChanges = true);
     }
 }

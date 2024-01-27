@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using FlashCards.Core.Abstractions;
 
 namespace FlashCards.Core.Models
@@ -7,11 +8,11 @@ namespace FlashCards.Core.Models
     /// <summary>
     /// Default implementation of <see cref="IFlashCard"/>
     /// </summary>
-    public class FlashCard : IFlashCard
+    public class FlashCardModel : IFlashCard
     {
-        private Guid _id;
+        private int _id;
         /// <inheritdoc/>
-        public Guid Id
+        public int Id
         {
             get => _id;
             set
@@ -24,10 +25,12 @@ namespace FlashCards.Core.Models
         }
 
         /// <inheritdoc/>
-        public Guid FlashCardSetId { get; set; }
+        public int FlashCardSetId { get; set; }
 
         private string _term;
+
         /// <inheritdoc/>
+        [Required]
         public string Term
         {
             get => _term;
@@ -42,6 +45,7 @@ namespace FlashCards.Core.Models
 
         private string _definition;
         /// <inheritdoc/>
+        [Required]
         public string Definition
         {
             get => _definition;
@@ -116,6 +120,6 @@ namespace FlashCards.Core.Models
         /// <summary>
         /// <see cref="FlashCardSet"/> containing the FlashCard
         /// </summary>
-        public virtual FlashCardSet FlashCardSet { get; set; }
+        public virtual FlashCardSetModel FlashCardSet { get; set; }
     }
 }

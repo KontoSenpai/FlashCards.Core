@@ -12,12 +12,12 @@ namespace FlashCards.Core.Abstractions
         /// <summary>
         /// Unique Identifier of the FlashCard
         /// </summary>
-        Guid Id { get; }
+        int Id { get; }
 
         /// <summary>
         /// Unique identifier of the <see cref="IFlashCardSet"/> that contains the FlashCard
         /// </summary>
-        Guid FlashCardSetId { get; set; }
+        int FlashCardSetId { get; set; }
 
         /// <summary>
         /// Term of the FlashCard

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using FlashCards.Core.Abstractions;
 
 namespace FlashCards.Core.Models
@@ -8,11 +9,11 @@ namespace FlashCards.Core.Models
     /// <summary>
     /// Default implementation of <see cref="IFlashCard"/>
     /// </summary>
-    public class FlashCardSet : IFlashCardSet
+    public class FlashCardSetModel : IFlashCardSet
     {
-        private Guid _id;
+        private int _id;
         /// <inheritdoc/>
-        public Guid Id
+        public int Id
         {
             get => _id;
             set
@@ -26,6 +27,7 @@ namespace FlashCards.Core.Models
 
         private string _name;
         /// <inheritdoc/>
+        [Required]
         public string Name
         {
             get => _name;
@@ -110,6 +112,20 @@ namespace FlashCards.Core.Models
             }
         }
 
+        private string _owner;
+        /// <inheritdoc/>
+        public String Owner
+        { 
+            get => _owner; 
+            set
+            {
+                if (_owner == value) return;
+
+                _owner = value;
+                RaisePropertyChanged(nameof(Owner));
+            }
+        }
+
         private ObservableCollection<IFlashCard> _flashCards;
         /// <inheritdoc/>
         public ObservableCollection<IFlashCard> FlashCards
@@ -124,11 +140,9 @@ namespace FlashCards.Core.Models
             }
         }
 
-        public FlashCardSet()
+        public FlashCardSetModel()
         {
             FlashCards = new ObservableCollection<IFlashCard>();
-            CreatedAt = DateTime.Now;
-            LastModifiedAt = DateTime.Now;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

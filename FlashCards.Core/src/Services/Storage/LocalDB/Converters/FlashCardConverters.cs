@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using FlashCards.Core.Abstractions;
-using FlashCards.Core.Models;
-using FlashCards.Core.Services.Storage.LocalDB.Models;
+using FlashCards.Core.src.Services.Storage.LocalDB;
+using ServiceModel = FlashCards.Core.Models.FlashCardModel;
 
 namespace FlashCards.Core.Services.Storage.LocalDB.Converters
 {
     internal static class FlashCardConverters
     {
-        public static IFlashCard ToServiceModel(this SqlFlashCard flashCard)
+        public static IFlashCard ToServiceModel(this FlashCard flashCard)
         {
-            return new FlashCard()
+            return new ServiceModel()
             {
                 Id = flashCard.Id,
                 Definition = flashCard.Definition,
@@ -20,7 +20,7 @@ namespace FlashCards.Core.Services.Storage.LocalDB.Converters
             };
         }
 
-        public static IEnumerable<IFlashCard> ToServiceModels(this ICollection<SqlFlashCard> flashCards)
+        public static IEnumerable<IFlashCard> ToServiceModels(this ICollection<FlashCard> flashCards)
         {
             var cards = new List<IFlashCard>();
             foreach (var flashCard in flashCards)
@@ -31,9 +31,9 @@ namespace FlashCards.Core.Services.Storage.LocalDB.Converters
             return cards;
         }
 
-        public static SqlFlashCard ToSqlModel(this IFlashCard flashCard)
+        public static FlashCard ToSqlModel(this IFlashCard flashCard)
         {
-            return new SqlFlashCard()
+            return new FlashCard()
             {
                 Id = flashCard.Id,
                 Term = flashCard.Term,

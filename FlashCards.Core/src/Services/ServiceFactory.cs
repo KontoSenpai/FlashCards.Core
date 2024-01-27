@@ -59,10 +59,10 @@ namespace FlashCards.Core.Services
             switch (selectedStorageApi)
             {
                 case EnumStorageApis.LocalDb:
-                    if (_storageService == null || _storageService.GetType() != typeof(SqlStorageService))
+                    if (_storageService == null || _storageService.GetType() != typeof(LocalDBStorageService))
                     {
                         _storageService?.Dispose();
-                        _storageService = new SqlStorageService();
+                        _storageService = new LocalDBStorageService();
                     }
 
                     break;

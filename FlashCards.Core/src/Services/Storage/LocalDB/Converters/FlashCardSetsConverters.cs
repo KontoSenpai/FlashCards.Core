@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using FlashCards.Core.Abstractions;
-using FlashCards.Core.Models;
-using FlashCards.Core.Services.Storage.LocalDB.Models;
+using FlashCards.Core.src.Services.Storage.LocalDB;
+using ServiceModel = FlashCards.Core.Models.FlashCardSetModel;
 
 namespace FlashCards.Core.Services.Storage.LocalDB.Converters
 {
     internal static class FlashCardSetConverters
     {
-        public static IFlashCardSet ToServiceModel(this SqlFlashCardSet flashCardSet)
+        public static IFlashCardSet ToServiceModel(this FlashCardSet flashCardSet)
         {
-            var set = new FlashCardSet()
+            var set = new ServiceModel()
                 {
                     Id = flashCardSet.Id,
                     Name = flashCardSet.Name,
@@ -20,13 +19,14 @@ namespace FlashCards.Core.Services.Storage.LocalDB.Converters
                     DefinitionLanguageCode = flashCardSet.DefinitionLanguageCode,
                     CreatedAt = flashCardSet.CreatedAt,
                     LastModifiedAt = flashCardSet.LastModifiedAt,
+                    Owner = flashCardSet.Owner,
                     FlashCards = new ObservableCollection<IFlashCard>(flashCardSet.FlashCards.ToServiceModels()),
                 };
 
             return set;
         }
 
-        public static IEnumerable<IFlashCardSet> ToServiceModels(this ICollection<SqlFlashCardSet> flashCardSets)
+        public static IEnumerable<IFlashCardSet> ToServiceModels(this ICollection<FlashCardSet> flashCardSets)
         {
             var sets = new List<IFlashCardSet>();
             foreach (var flashCardSet in flashCardSets)
@@ -37,9 +37,9 @@ namespace FlashCards.Core.Services.Storage.LocalDB.Converters
             return sets;
         }
 
-        public static SqlFlashCardSet ToSqlModel(this IFlashCardSet flashCardSet)
+        public static FlashCardSet ToSqlModel(this IFlashCardSet flashCardSet)
         {
-            return new SqlFlashCardSet()
+            return new FlashCardSet()
             {
                 Id = flashCardSet.Id,
                 Name = flashCardSet.Name,
@@ -48,6 +48,7 @@ namespace FlashCards.Core.Services.Storage.LocalDB.Converters
                 DefinitionLanguageCode = flashCardSet.DefinitionLanguageCode,
                 CreatedAt = flashCardSet.CreatedAt,
                 LastModifiedAt = flashCardSet.LastModifiedAt,
+                Owner = flashCardSet.Owner,
             };
         }
     }

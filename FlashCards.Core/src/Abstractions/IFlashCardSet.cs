@@ -13,7 +13,7 @@ namespace FlashCards.Core.Abstractions
         /// <summary>
         /// Unique Identifier of the FlashCardSet
         /// </summary>
-        Guid Id { get; }
+        int Id { get; }
 
         /// <summary>
         /// User-Friendly Name of the FlashCardSet
@@ -49,5 +49,10 @@ namespace FlashCards.Core.Abstractions
         /// List of <see cref="IFlashCard"/> contained in the FlashCardSet
         /// </summary>
         ObservableCollection<IFlashCard> FlashCards { get; set; }
+
+        /// <summary>
+        /// Email adress of the person that created the Set
+        /// </summary>
+        String Owner { get; set; }
     }
 }

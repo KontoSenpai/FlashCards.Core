@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LocalStorageContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FlashCards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Term" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Definition" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FlashCardSetId" Type="int" Nullable="false" />
+          <Property Name="TimeStudied" Type="int" Nullable="false" />
+          <Property Name="ErrorsMade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FlashCardSets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TermLanguageCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DefinitionLanguageCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedAt" Type="datetime" Nullable="false" />
+          <Property Name="Owner" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_FlashCards_dbo_FlashCardSets_FlashCardSetId">
+          <End Role="FlashCardSets" Type="Self.FlashCardSets" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FlashCards" Type="Self.FlashCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlashCardSets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FlashCards">
+              <PropertyRef Name="FlashCardSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LocalStorageContextStoreContainer">
+          <EntitySet Name="FlashCards" EntityType="Self.FlashCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlashCardSets" EntityType="Self.FlashCardSets" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_FlashCards_dbo_FlashCardSets_FlashCardSetId" Association="Self.FK_dbo_FlashCards_dbo_FlashCardSets_FlashCardSetId">
+            <End Role="FlashCardSets" EntitySet="FlashCardSets" />
+            <End Role="FlashCards" EntitySet="FlashCards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LocalStorageContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FlashCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Term" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Definition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FlashCardSetId" Type="Int32" Nullable="false" />
+          <Property Name="TimeStudied" Type="Int32" Nullable="false" />
+          <Property Name="ErrorsMade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FlashCardSet" Relationship="Self.FK_dbo_FlashCards_dbo_FlashCardSets_FlashCardSetId" FromRole="FlashCards" ToRole="FlashCardSets" />
+        </EntityType>
+        <EntityType Name="FlashCardSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TermLanguageCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DefinitionLanguageCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="FlashCards" Relationship="Self.FK_dbo_FlashCards_dbo_FlashCardSets_FlashCardSetId" FromRole="FlashCardSets" ToRole="FlashCards" />
+          <Property Name="Owner" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_FlashCards_dbo_FlashCardSets_FlashCardSetId">
+          <End Role="FlashCardSets" Type="Self.FlashCardSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FlashCards" Type="Self.FlashCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlashCardSets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FlashCards">
+              <PropertyRef Name="FlashCardSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LocalStorageDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FlashCards" EntityType="Self.FlashCard" />
+          <EntitySet Name="FlashCardSets" EntityType="Self.FlashCardSet" />
+          <AssociationSet Name="FK_dbo_FlashCards_dbo_FlashCardSets_FlashCardSetId" Association="Self.FK_dbo_FlashCards_dbo_FlashCardSets_FlashCardSetId">
+            <End Role="FlashCardSets" EntitySet="FlashCardSets" />
+            <End Role="FlashCards" EntitySet="FlashCards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LocalStorageContextStoreContainer" CdmEntityContainer="LocalStorageDBContext">
+          <EntitySetMapping Name="FlashCards">
+            <EntityTypeMapping TypeName="LocalStorageContext.FlashCard">
+              <MappingFragment StoreEntitySet="FlashCards">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="Definition" ColumnName="Definition" />
+                <ScalarProperty Name="FlashCardSetId" ColumnName="FlashCardSetId" />
+                <ScalarProperty Name="TimeStudied" ColumnName="TimeStudied" />
+                <ScalarProperty Name="ErrorsMade" ColumnName="ErrorsMade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlashCardSets">
+            <EntityTypeMapping TypeName="LocalStorageContext.FlashCardSet">
+              <MappingFragment StoreEntitySet="FlashCardSets">
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TermLanguageCode" ColumnName="TermLanguageCode" />
+                <ScalarProperty Name="DefinitionLanguageCode" ColumnName="DefinitionLanguageCode" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
